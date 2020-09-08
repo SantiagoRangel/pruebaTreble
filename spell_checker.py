@@ -207,22 +207,30 @@ def two_length_edit(word):
 
 # Funcion de clasificacion de frases usa spacy y un data set en español.
 # Usando la función de similarity se comparan el texto con las opciones y se retorna la de valor mas alto.
+# Si encuentra palabras que no sean stopwords en la opcion le da un valor mucho mayor. 
 # Si no cumple con el umbral definido no se escoge ninguna opcion 
 def classifier_spacy(text, opciones):
+    palabras = text.split()
+    
     nlp = es_core_news_md.load()
-    stop = spacy.lang.es.stop_words.STOP_WORDS
+    stop = nlp.Defaults.stop_words
     rta = ''
     sim_max = 0
     i = 0
     for op in opciones:
         opcion = nlp(op.lower())
         sim = nlp(text).similarity(opcion)
+        print(sim)
+        for palabra in palabras:
+            if (not palabra in stop) and palabra in op.split():
+                sim += 0.3
+        print(sim)
         if sim > sim_max:
             print(op)
             sim_max = sim
             rta = str(i+1)
         i += 1
-    if sim_max < 0.40:
+    if sim_max < 0.30:
         rta = str(0)
     return rta
 
