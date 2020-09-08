@@ -41,7 +41,7 @@ To exit Haskell run:
 $ :q
 ```
 
-*This program is case sensitive
+**This program is case sensitive**
 
 # treble.ai's technical test v1.1.1 - Part 2
 
