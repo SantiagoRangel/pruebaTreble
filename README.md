@@ -92,7 +92,7 @@ And get something like this:
 
 ```bash
 offline: Starting Offline: dev/us-east-1.
-offline: Offline [http for lambda] listening on http://localhost:3002
+offline: Offline [http for lambda] listening on http://localhost:3000
 
 
    ┌──────────────────────────────────────────────────────────────────────────────┐
