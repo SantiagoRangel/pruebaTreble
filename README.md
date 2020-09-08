@@ -57,6 +57,13 @@ Go to /front and run:
 ```bash
 $ npm i
 ```
+To run front-end exceute:
+```bash
+$ npm start
+```
+
+Front app was set on port 4000
+
 **Python Setup:**
 
 For this site spacy and a medium size spanish data set was used in order to match phrases. To install this packages run on the root folder:
