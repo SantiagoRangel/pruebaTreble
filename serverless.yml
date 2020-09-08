@@ -64,7 +64,24 @@ functions:
       - http:
           path: spellcheck
           method: post
-
+  historial:
+    handler: handler.historial
+    events:
+      - http:
+          path: historial
+          method: get
+  classifier:
+    handler: handler.classifier
+    events:
+      - http:
+          path: classifier
+          method: post
+  test:
+    handler: handler.run_test
+    events:
+      - http:
+          path: test
+          method: get
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

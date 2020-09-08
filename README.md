@@ -4,6 +4,12 @@ This is a serverless project, refer to the [serverless installation guide](https
 
 Once everything is setup correctly. You should be able to run:
 
+pip install spacy
+python -m pip install --user spacy
+python -m spacy download es_core_news_md
+
+
+
 ```bash
 $ serverless offline
 ```
@@ -22,7 +28,7 @@ offline: Offline [http for lambda] listening on http://localhost:3002
    └─────────────────────────────────────────────────────────────────────────┘
 
 offline: [HTTP] server ready: http://localhost:3000 🚀
-offline: 
+offline:
 offline: Enter "rp" to replay the last request
 
 offline: POST /dev/spellcheck (λ: hello)

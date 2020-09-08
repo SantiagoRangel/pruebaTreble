@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+#logo {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 80%;
+  height: auto;
+}
+#cajatexto{
+  margin-top: 10px;
+ padding-left: 10px;
+  min-height: 3rem;
+  height:auto;
+ width: 50rem; 
+ font-family: 'Montserrat', sans-serif;
+ font-size: 2rem;
+ border: 2px solid black;
+}
+#check{
+  margin-top: 10px;
+  margin-left: 10px;
+  height: auto;
+  width: 10rem; 
+  border: none;
+  align-content: center;
+  padding-left: 50px;
+}
+#header {
+  width: 500px;
+}
+#divlogo {
+  width: 50px;
+}
+#titulo {
+   margin-top: 30px;
+}
+#flecha:hover {
+  cursor: pointer;
+}
+.fa-check{
+  font-size: 3rem;
+  color: #9b9bff;
+}
+.fa-plus-circle{
+  margin-top: 3px;
+  margin-left: 5px;
+  font-size: 1.5rem;
+  color: #9b9bff;
+}
+.fa-plus-circle:hover {
+  cursor: pointer;
+}
+.fa-minus-circle{
+  margin-top: 3px;
+  margin-left: 5px;
+  font-size: 1.5rem;
+  color: #9b9bff;
+}
+.fa-minus-circle:hover {
+  cursor: pointer;
+}
+.titulo {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.opciones{
+  margin-top: 10px;
+ padding-left: 10px;
+  min-height: 3rem;
+  
+ width: 50rem; 
+ font-family: 'Montserrat', sans-serif;
+ font-size: 2rem;
+ border: 2px solid black;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6rem;
+}
+h4 {
+  font-family: 'Montserrat', sans-serif;
+ 
+}
+input {
+ height: 3rem;
+ width: 50rem; 
+ font-family: 'Montserrat', sans-serif;
+ font-size: 2rem;
+ border: 2px solid black;
+ padding-left: 10px;
+}
+input:focus {
+  outline: none;
+  border:1px solid #9b9bff;
+  box-shadow: 0 0 10px #9b9bff;
+}
+button {
+  height: 3rem;
+  width: 10rem; 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  background-color: #9b9bff;
+  border: none;
+  color: white;
+}
+button:hover{
+  background-color: #c1c1fd;
+}
+button:focus {
+  outline: none;
+}
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+li::before {
+  content: "\2022";
+  color: #9b9bff;
+ 
+  display: inline-block; 
+  width: 1rem;
+  margin-left: -2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
