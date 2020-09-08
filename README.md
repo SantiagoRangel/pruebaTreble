@@ -34,12 +34,14 @@ The tests defined were:
 
 If you want to make a custom text just run a command such as:
 ```bash
-$ :q containedInJustOneSentence "Muy" ["Muy bien","Hola mundo"]
+$ containedInJustOneSentence "mundo" ["Muy bien","Hola mundo"]
 ```
 To exit Haskell run:
 ```bash
 $ :q
 ```
+
+*This program is case sensitive
 
 # treble.ai's technical test v1.1.1 - Part 2
 
