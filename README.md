@@ -3,10 +3,13 @@
 This is a serverless project, refer to the [serverless installation guide](https://www.serverless.com/framework/docs/providers/aws/guide/installation/) to resolve the requirements needed to run this project. It is not needed that the project is deployed to the cloud. It is enough that the project runs locally, please use the [serverless offline plugin](https://www.npmjs.com/package/serverless-offline) to achieve this.
 
 Once everything is setup correctly. You should be able to run:
-
+Ejecutar npm i en raiz
+npm i en front
 pip install spacy
 python -m pip install --user spacy
 python -m spacy download es_core_news_md
+npx serverless offline
+
 
 
 
