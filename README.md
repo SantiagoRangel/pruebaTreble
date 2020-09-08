@@ -167,4 +167,4 @@ If all tests were passed, returns:
     "result": "All tests passed"
 }
 
-**All endpoints except for tests are avaible through interaction with front web app**
+**All endpoints except for tests are avaible through interaction with the front web app**
