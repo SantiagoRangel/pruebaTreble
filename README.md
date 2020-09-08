@@ -114,8 +114,15 @@ offline: Enter "rp" to replay the last request
 ```
 
 For this backend 4 endpoints were made:
-- POST | http://localhost:3000/dev/spellcheck   :
-daoijdaojdi
+- POST | http://localhost:3000/dev/spellcheck
+
+Reciebes
 - GET  | http://localhost:3000/dev/historial
 - POST | http://localhost:3000/dev/classifier
 - GET  | http://localhost:3000/dev/test
+
+If all tests were passed, returns:
+
+{
+    "result": "All tests passed"
+}
