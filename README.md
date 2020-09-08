@@ -147,6 +147,7 @@ Otherwise it returns spellchecker history:
 - POST | http://localhost:3000/dev/classifier
 
 Recives: 
+
 {
     "text": "el producto salio mal",
     "opciones": ["Una problema con la entrega","Un problema con el pago","Un problema con el producto", "Otro tipo de problema"]
