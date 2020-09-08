@@ -3,6 +3,7 @@ For this test 3 Haskell functions were created :
 - match :: Answer -> [String] -> Maybe String
 - containedInJustOneSentence :: String -> [String] -> Maybe String
 - containedInSentences :: String -> [String] -> [Maybe String]
+
 To run this program first install Haskell on your machine. After installation is done open your command prompt and open this proyect. Then go to /Haskell where you will find
 Helloworld.hs . On your command prompt run:
 ```bash
