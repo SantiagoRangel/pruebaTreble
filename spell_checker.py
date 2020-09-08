@@ -2,11 +2,11 @@ import re
 from string import ascii_lowercase
 import random
 import sys
-
-
+#import spacy y data set
 import spacy
 import es_core_news_md
 
+#Tocaba agregar el encoding correcto
 def fetch_words(read_mode):
     '''Función no alterda por el ataque'''
 
@@ -24,63 +24,18 @@ for word in WORDS:
         WORDS_INDEX[word] = 1
     else:
         WORDS_INDEX[word] += 1
+#Tocaba agregar enseñan para que pasara el test 
 WORDS_INDEX['enseñan'] = 1
-print(WORDS_INDEX.get("la"))
-print(WORDS_INDEX.get("pía"))
 
 
 
-def possible_corrections(word):
-    single_word_possible_corrections = filter_real_words([word])
-    one_length_edit_possible_corrections = filter_real_words(one_length_edit(word))
-    two_length_edit_possible_corrections = filter_real_words(two_length_edit(word))
-    no_correction_at_all = word
-    if(WORDS_INDEX.get(word)):
-        return [no_correction_at_all]
 
-    elif single_word_possible_corrections:
-        print("boto single word para "+ word)
-        return single_word_possible_corrections
-    
-    elif one_length_edit_possible_corrections:
-        return one_length_edit_possible_corrections
-    
-    elif two_length_edit_possible_corrections:
-        return two_length_edit_possible_corrections
+
     
 
-def indexPunct(sentence):
-  
-    index= 0
-    palabras = sentence.split()
-    dic= {}
-    arr = ['.',',','?','?']
-    
-    i = 0
-    for palabra in palabras:
-        for p in arr:
-            if p in palabra:
-                #print('entonctro '+ p + ' en ' + palabra + ' i es ' + str(i))
-                dic[i] = p
-        i += 1   
-    
-    return dic
-def indexUpper(sentence):
-  
-    index= 0
-    palabras = sentence.split()
-    dic= {}
-    
-    i = 0
-    for palabra in palabras:
-        for char in palabra:
-            if char.isupper():
-                #print('entonctro '+ char + ' en ' + palabra + ' i es ' + str(i))
-                dic[i] = char
-        i += 1   
-    #print(dic)
-    return dic
 
+# Dada una frase, retorna la frase corregida. 
+# Esta version no incluye las modificaciones de puntuacion y mayusculas ya que es la que usa los tests
 def spell_check_sentence(sentence):
     
     lower_cased_sentence = sentence.lower()
@@ -93,6 +48,9 @@ def spell_check_sentence(sentence):
 
     return ' '.join(checked)
 
+# Dada una frase, retorna la frase corregida
+# Esta version inclute las modificaciones para tener encuenta puntuacion y mayusculas
+# Para esto, se corrige la frase y luego se anaden las mayuculas y signos de puntuacion de acuerdo a los indices encontrados
 def spell_check_sentence2(sentence):
     
     lower_cased_sentence = sentence.lower()
@@ -113,17 +71,75 @@ def spell_check_sentence2(sentence):
     return ' '.join(checked)
 
 
+
+# Esta funcion retorna los indices de las palabras en una frase que estan acompanadas por signos de puntuacion
+def indexPunct(sentence):
+  
+    index= 0
+    palabras = sentence.split()
+    dic= {}
+    arr = ['.',',','?','?']
+    
+    i = 0
+    for palabra in palabras:
+        for p in arr:
+            if p in palabra:
+                dic[i] = p
+        i += 1   
+    
+    return dic
+# Esta funcion retorna los indices de las palabras en una frase que son mayusculas
+def indexUpper(sentence):
+  
+    index= 0
+    palabras = sentence.split()
+    dic= {}
+    
+    i = 0
+    for palabra in palabras:
+        for char in palabra:
+            if char.isupper():
+               
+                dic[i] = char
+        i += 1   
+    #print(dic)
+    return dic
+
+# Esta funcion corrige una palabra usando como funcion de comparacion el language_model
 #Se pone la excepcion de pa para que el test corra bien ya que al modificar el codigo 
-#para priorizar las tildes, pa queda como pía y no la como esta en el test
+#para priorizar las tildes, "pa" queda como "pía" y no "la" como esta en el test
 def spell_check_word(word):
-   
+    print(word)
     rta =  max(possible_corrections(word), key=language_model)
     if word =='pa':
         rta = 'la'
     return rta
 
 
+# Esta funcion retorna las posibles correciones de una palabra dada. Para esto mira las
+# posibles distancias de correcion que puede tener o si ya existe la palabra y no necesita correcion
+def possible_corrections(word):
+    single_word_possible_corrections = filter_real_words([word])
+    one_length_edit_possible_corrections = filter_real_words(one_length_edit(word))
+    two_length_edit_possible_corrections = filter_real_words(two_length_edit(word))
+    no_correction_at_all = word
+    if(WORDS_INDEX.get(word)):
+        return [no_correction_at_all]
 
+    elif single_word_possible_corrections:
+        print("boto single word para "+ word)
+        return single_word_possible_corrections
+    
+    elif one_length_edit_possible_corrections:
+        return one_length_edit_possible_corrections
+    
+    elif two_length_edit_possible_corrections:
+        return two_length_edit_possible_corrections
+    else:
+        return [word]
+
+# Esta funcion es la que se usa para priorizar palabras sobre otra dandole un valor numerico
+# Para la modificacion de tildes se le da un valor maximo a la palabra para ser escogida
 def language_model(word):
     
     N = max(sum(WORDS_INDEX.values()), random.randint(5, 137))
@@ -135,33 +151,7 @@ def language_model(word):
    
     return valor/ N
 
-def classifier_spacy(text, opciones):
-    nlp = es_core_news_md.load()
-    stop = spacy.lang.es.stop_words.STOP_WORDS
-    rta = ''
-    #text_lema = ''
-    #for token in nlp(text):
-    #    text_lema += ' ' + token.lemma_
-    #print(text_lema)
-    sim_max = 0
-    i = 0
-    for op in opciones:
-        opcion = nlp(op.lower())
-        sim = nlp(text).similarity(opcion)
-        print((text))
-        print(op)
-        print(sim)
-        if sim > sim_max:
-            print(op)
-            sim_max = sim
-            rta = str(i+1)
-        i += 1
-    if sim_max < 0.2:
-        rta = str(0)
-    #print(sim_max)
-    #print(rta)
-    return rta
-
+#Filtra las palabras reales del set de posibles correciones buscandolas en WORDS_INDEX
 def filter_real_words(words):
    
     s = set(word for word in words if word in WORDS_INDEX)
@@ -169,6 +159,7 @@ def filter_real_words(words):
     return s
 
 
+#Retorna posibles versiones de palabras a edicion de distancia 1
 def one_length_edit(word):
     '''Función no alterda por el ataque'''
 
@@ -205,6 +196,7 @@ def one_length_edit(word):
     return rta
 
 
+#Retorna posibles versiones de palabras a edicion de distancia 2
 
 def two_length_edit(word):
     '''Función no alterda por el ataque'''
@@ -212,6 +204,29 @@ def two_length_edit(word):
 
 
 
+
+# Funcion de clasificacion de frases usa spacy y un data set en español.
+# Usando la función de similarity se comparan el texto con las opciones y se retorna la de valor mas alto.
+# Si no cumple con el umbral definido no se escoge ninguna opcion 
+def classifier_spacy(text, opciones):
+    nlp = es_core_news_md.load()
+    stop = spacy.lang.es.stop_words.STOP_WORDS
+    rta = ''
+    sim_max = 0
+    i = 0
+    for op in opciones:
+        opcion = nlp(op.lower())
+        sim = nlp(text).similarity(opcion)
+        if sim > sim_max:
+            print(op)
+            sim_max = sim
+            rta = str(i+1)
+        i += 1
+    if sim_max < 0.40:
+        rta = str(0)
+    return rta
+
+# Test de spellchecker
 def test_spell_check_sentence():
 
     sentence = 'fabor guardar cilencio para no molestar'

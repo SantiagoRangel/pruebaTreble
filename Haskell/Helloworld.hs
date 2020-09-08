@@ -66,9 +66,14 @@ encuentra :: String -> [String] -> String
 encuentra palabra =
     foldr (\x acc -> if isInfixOf palabra x then acc ++ x else acc ) ""
 
+mp1 = match (Digit 1) ["Muy bien","Hola mundo"]
+mp2 = match (Digit 9) ["Muy bien", "Hola mundo", "Quiero saber de mas"]
+mp3 = match (Digit 3) ["Muy bien", "Hola mundo", "Ayer"]
+mp4 = match (SingleWord "Muy") ["Muy bien", "Hola mundo"]
+mp5 = match (SingleWord "Hola") ["Hola si", "Hola mundo"]
 
-main :: IO () 
-p1 = "hola"
-p2 = "hola2"
-p3 = p1 ++ foo ++ p2
-main = print p3
+cop1 = containedInJustOneSentence "Muy" ["Muy bien","Hola mundo"]
+cop2 = containedInJustOneSentence "Hola" ["Hola bien","Hola mundo", "Quiero saber mas"]
+
+cp1 = containedInSentences "hola" ["hola si", "hola no", "mas"]
+cp2 =  containedInSentences "Dia" ["Hola bien", "Hola mundo", "Quiero saber de mas"]

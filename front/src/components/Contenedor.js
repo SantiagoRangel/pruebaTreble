@@ -22,16 +22,21 @@ class Contenedor extends Component {
         .then((res) => {
           //console.log(res);
           if (res.status === 200) {
-            console.log("llego al res de historial");
+            
             var js = res.json();
+            
             js.then((rta) => {
               var arr = [];
-              Object.keys(rta).forEach(function (key) {
-                arr.push(rta[key]);
-              });
+              //onsole.log(rta);
+              if(!(rta["history"])){
+                Object.keys(rta).forEach(function (key) {
+                  arr.push(rta[key]);
+                });
+              }
+             
 
               this.setState({ historial: arr, loading: false });
-              //console.log(rta);
+            
             });
           } else {
             alert("Error al hacer spell check");
@@ -53,8 +58,8 @@ class Contenedor extends Component {
           <div className="row">
             <div className="col-6" style={{borderLeft: "4px black solid"}}>
               <h4>Text</h4>
-              <ul> {this.state.historial.map((registro) => (
-                <li>{registro[0]}</li>
+              <ul> {this.state.historial.map((registro, i) => (
+                <li key={i}>{registro[0]}</li>
               ))}</ul>
              
             </div>

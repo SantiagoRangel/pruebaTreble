@@ -6,9 +6,14 @@ class SpellChecker extends Component {
     super(props);
     this.state = { checked: "",
                     loading: false};
+    this.check = this.check.bind(this);
   }
 
-  
+  preCheck = (e)=>{
+    if(document.getElementById("spelltext").value != ""){
+      this.check();
+    }
+  }
   check = (e) => {
     this.setState({ loading: true }, () => {
       let text = document.getElementById("spelltext").value;
@@ -22,7 +27,7 @@ class SpellChecker extends Component {
         .then((res) => {
           //console.log(res);
           if (res.status === 200) {
-            console.log("llego al res de spellcheck");
+         
             var js = res.json();
             js.then((rta) => {
               this.setState({ checked: rta , loading: false});
@@ -69,7 +74,7 @@ class SpellChecker extends Component {
       <div>
         <div style={{ marginLeft: "25px" , marginTop:"15px"}} className="row">
           <input type="text" placeholder="text" id="spelltext"></input>
-          <button style={{ marginLeft: "10px" }} onClick={this.check}>
+          <button style={{ marginLeft: "10px" }} onClick={this.preCheck}>
             Check
           </button>
          {loading}

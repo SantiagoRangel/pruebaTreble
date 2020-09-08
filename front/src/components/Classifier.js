@@ -25,7 +25,7 @@ class Classifier extends Component {
         return {border: "black solid 2px"}
     }
     else if(opcion == this.state.opcion){
-        return {border: "green solid 2px"}
+        return {border: "lightgreen solid 4px"}
     }
     else{
         return {border: "red solid 2px"}
@@ -53,7 +53,7 @@ class Classifier extends Component {
             var js = res.json();
             js.then((rta) => {
               this.setState({ opcion: rta['opcion'] , loading: false});
-              console.log(rta['opcion']);
+              //console.log(rta['opcion']);
             });
            
           } else {
@@ -73,24 +73,25 @@ class Classifier extends Component {
             <div className="row" style={{ marginLeft: "0px" }}>
               <h4 style={{ color: "#9b9bff" }}>Opciones</h4>
               <i
-                class="fa fa-plus-circle"
+                className="fa fa-plus-circle"
                 aria-hidden="true"
                 onClick={this.sumarOpcion}
               ></i>
               <i
-                class="fa fa-minus-circle"
+                className="fa fa-minus-circle"
                 aria-hidden="true"
                 onClick={this.restarOpcion}
               ></i>
             </div>
 
-            {this.state.opciones.map((opcion) => (
+            {this.state.opciones.map((opcion, i) => (
               <input
                 className="opciones"
                 type="text"
                 id={"opcion" + opcion}
                 placeholder={opcion}
                 style={this.marcar(opcion)}
+                key={i}
               ></input>
             ))}
           </div>
@@ -98,7 +99,7 @@ class Classifier extends Component {
           <h4 style={{ color: "#9b9bff", marginLeft: "-15px" }}> Texto</h4>
             <div className="row">
               
-              <input className="opciones" id="textclassify" type="text" style={{width: "600px"}}></input>
+              <input className="opciones" id="textclassify" type="text" style={{width: "70%"}}></input>
               <button style={{ marginLeft: "10px" , marginTop: "10px"}} onClick={this.classify}>Classify</button>
             </div>
           </div>

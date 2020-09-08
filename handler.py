@@ -2,6 +2,7 @@ import json
 from spell_checker import spell_check_sentence, spell_check_sentence2, test_spell_check_sentence, classifier_spacy
 from db import insert_registro, crear_tabla, get_registros
 
+# Esta funcion recibe el body y se encarga de crear tabla para los registros si no existe. Luego retorna la frase corregida
 def spell_check(event, context):
     
     bod = event['body'].encode('latin-1')
@@ -10,8 +11,6 @@ def spell_check(event, context):
     text = bod['text']
     crear_tabla()
     insert_registro(text, spell_check_sentence2(text))
-    #test_spell_check_sentence()
-    
     rta = {
         "text" :  spell_check_sentence(text)
     }
@@ -21,19 +20,22 @@ def spell_check(event, context):
     }
 
     return response
-
+#Esta funcion devuelve el historail de registros revisando que si no exista solo retorne : "No history"
 def historial(event, context):
     registros = get_registros()
     body = {}
-    for r in registros:
-        body[r[0]] = (r[1], r[2])
-    #print(body)
+    if(isinstance(registros, str)):
+        body["history"] = registros
+    else:
+        for r in registros:
+            body[r[0]] = (r[1], r[2])
     response = {
         "statusCode": 200,
         "body": json.dumps(body)
     }
     return response
 
+# Esta funcion llama el clasficador con los parametros que recibe del body. Si el texto es un numero devuelve la opcion que corresponda a ese numero
 def classifier(event, context):
     bod = event['body'].encode('latin-1')
     bod = json.loads(bod)
@@ -55,6 +57,8 @@ def classifier(event, context):
     }
     
     return response
+
+#Esta funcion ejecuta el test del spellchecker
 def run_test(event, context):
     rta = {
         "result" :  test_spell_check_sentence()
