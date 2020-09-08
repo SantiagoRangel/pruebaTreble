@@ -30,8 +30,12 @@ The tests defined were:
 - cop2 = containedInJustOneSentence "Hola" ["Hola bien","Hola mundo", "Quiero saber mas"]
 
 - cp1 = containedInSentences "hola" ["hola si", "hola no", "mas"]
-- cp2 =  containedInSentences "Dia" ["Hola bien", "Hola mundo", "Quiero saber de mas"]
+- cp2 = containedInSentences "Dia" ["Hola bien", "Hola mundo", "Quiero saber de mas"]
 
+If you want to make a custom text just run a command such as:
+```bash
+$ :q containedInJustOneSentence "Muy" ["Muy bien","Hola mundo"]
+```
 To exit Haskell run:
 ```bash
 $ :q
