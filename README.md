@@ -94,23 +94,27 @@ And get something like this:
 offline: Starting Offline: dev/us-east-1.
 offline: Offline [http for lambda] listening on http://localhost:3002
 
-   ┌─────────────────────────────────────────────────────────────────────────┐
-   │                                                                         │
-   │   POST | http://localhost:3000/dev/spellcheck                           │
-   │   POST | http://localhost:3000/2015-03-31/functions/hello/invocations   │
-   │                                                                         │
-   └─────────────────────────────────────────────────────────────────────────┘
 
+   ┌──────────────────────────────────────────────────────────────────────────────┐
+   │                                                                              │
+   │   POST | http://localhost:3000/dev/spellcheck                                │
+   │   POST | http://localhost:3000/2015-03-31/functions/hello/invocations        │
+   │   GET  | http://localhost:3000/dev/historial                                 │
+   │   POST | http://localhost:3000/2015-03-31/functions/historial/invocations    │
+   │   POST | http://localhost:3000/dev/classifier                                │
+   │   POST | http://localhost:3000/2015-03-31/functions/classifier/invocations   │
+   │   GET  | http://localhost:3000/dev/test                                      │
+   │   POST | http://localhost:3000/2015-03-31/functions/test/invocations         │
+   │                                                                              │
+   └──────────────────────────────────────────────────────────────────────────────┘
 offline: [HTTP] server ready: http://localhost:3000 🚀
 offline:
 offline: Enter "rp" to replay the last request
 
-offline: POST /dev/spellcheck (λ: hello)
 ```
 
-To test that the endpoint is working correctly use cURL:
-
-```bash
-$ curl http://localhost:3000/dev/spellcheck> -X POST -d '{ "text": "un lgar para la hopinion"}'
-{ "text" : "un lugar para la opinión" }
-```
+For this backend 4 endpoints were made:
+- POST | http://localhost:3000/dev/spellcheck   
+- GET  | http://localhost:3000/dev/historial
+- POST | http://localhost:3000/dev/classifier
+- GET  | http://localhost:3000/dev/test
