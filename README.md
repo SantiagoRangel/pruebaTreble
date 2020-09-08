@@ -1,3 +1,9 @@
+# treble.ai's technical test v1.1.1 - Part 1
+For this test 3 Haskell functions were created :
+- match :: Answer -> [String] -> Maybe String
+- containedInJustOneSentence :: String -> [String] -> Maybe String
+- containedInSentences :: String -> [String] -> [Maybe String]
+
 # treble.ai's technical test v1.1.1 - Part 2
 
 This is a serverless project, refer to the [serverless installation guide](https://www.serverless.com/framework/docs/providers/aws/guide/installation/) to resolve the requirements needed to run this project. It is not needed that the project is deployed to the cloud. It is enough that the project runs locally, please use the [serverless offline plugin](https://www.npmjs.com/package/serverless-offline) to achieve this.
