@@ -20,17 +20,17 @@ Now we can run functions in our code. Some tests were made from the examples giv
 $ mp1
 ```
 The tests defined were:
--mp1 = match (Digit 1) ["Muy bien","Hola mundo"]
--mp2 = match (Digit 9) ["Muy bien", "Hola mundo", "Quiero saber de mas"]
--mp3 = match (Digit 3) ["Muy bien", "Hola mundo", "Ayer"]
--mp4 = match (SingleWord "Muy") ["Muy bien", "Hola mundo"]
--mp5 = match (SingleWord "Hola") ["Hola si", "Hola mundo"]
+- mp1 = match (Digit 1) ["Muy bien","Hola mundo"]
+- mp2 = match (Digit 9) ["Muy bien", "Hola mundo", "Quiero saber de mas"]
+- mp3 = match (Digit 3) ["Muy bien", "Hola mundo", "Ayer"]
+- mp4 = match (SingleWord "Muy") ["Muy bien", "Hola mundo"]
+- mp5 = match (SingleWord "Hola") ["Hola si", "Hola mundo"]
 
--cop1 = containedInJustOneSentence "Muy" ["Muy bien","Hola mundo"]
--cop2 = containedInJustOneSentence "Hola" ["Hola bien","Hola mundo", "Quiero saber mas"]
+- cop1 = containedInJustOneSentence "Muy" ["Muy bien","Hola mundo"]
+- cop2 = containedInJustOneSentence "Hola" ["Hola bien","Hola mundo", "Quiero saber mas"]
 
--cp1 = containedInSentences "hola" ["hola si", "hola no", "mas"]
--cp2 =  containedInSentences "Dia" ["Hola bien", "Hola mundo", "Quiero saber de mas"]
+- cp1 = containedInSentences "hola" ["hola si", "hola no", "mas"]
+- cp2 =  containedInSentences "Dia" ["Hola bien", "Hola mundo", "Quiero saber de mas"]
 # treble.ai's technical test v1.1.1 - Part 2
 
 This is a serverless project, refer to the [serverless installation guide](https://www.serverless.com/framework/docs/providers/aws/guide/installation/) to resolve the requirements needed to run this project. It is not needed that the project is deployed to the cloud. It is enough that the project runs locally, please use the [serverless offline plugin](https://www.npmjs.com/package/serverless-offline) to achieve this.
