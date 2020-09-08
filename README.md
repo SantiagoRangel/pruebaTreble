@@ -119,17 +119,45 @@ For this backend 4 endpoints were made:
 Recieves:
 
 {
-    "text": <Text to spellcheck>
+    "text": "text to spellcheck"
 }
 
 Returns: 
 
 {
-    "text": <Checked text>
+    "text": "checked text"
 }
    
 - GET  | http://localhost:3000/dev/historial
+
+If there is no history ir returns:
+{
+    "history": "No history"
+}
+
+Otherwise it returns spellchecker history:
+
+{
+    "1": [
+        "En mi ezcuela no enseñan a escrivir ni a ler",
+        "En mi escuela no enseñan a escribir ni a le"
+    ]
+}
+
 - POST | http://localhost:3000/dev/classifier
+
+Recives: 
+{
+    "text": "el producto salio mal",
+    "opciones": ["Una problema con la entrega","Un problema con el pago","Un problema con el producto", "Otro tipo de problema"]
+}
+
+Returns the matched option or 0 if neither:
+
+{
+    "opcion": "3"
+}
+
 - GET  | http://localhost:3000/dev/test
 
 If all tests were passed, returns:
