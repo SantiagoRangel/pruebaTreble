@@ -20,14 +20,12 @@ class Contenedor extends Component {
         method: "GET",
       })
         .then((res) => {
-          //console.log(res);
           if (res.status === 200) {
             
             var js = res.json();
             
             js.then((rta) => {
               var arr = [];
-              //onsole.log(rta);
               if(!(rta["history"])){
                 Object.keys(rta).forEach(function (key) {
                   arr.push(rta[key]);

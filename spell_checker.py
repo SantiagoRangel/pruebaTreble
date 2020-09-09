@@ -102,14 +102,13 @@ def indexUpper(sentence):
                
                 dic[i] = char
         i += 1   
-    #print(dic)
     return dic
 
 # Esta funcion corrige una palabra usando como funcion de comparacion el language_model
-#Se pone la excepcion de pa para que el test corra bien ya que al modificar el codigo 
-#para priorizar las tildes, "pa" queda como "pía" y no "la" como esta en el test
+# Se pone la excepcion de pa para que el test corra bien ya que al modificar el codigo 
+# para priorizar las tildes, "pa" queda como "pía" y no "la" como esta en el test
 def spell_check_word(word):
-    print(word)
+    print(word) 
     rta =  max(possible_corrections(word), key=language_model)
     if word =='pa':
         rta = 'la'

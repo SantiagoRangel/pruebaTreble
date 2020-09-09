@@ -47,13 +47,11 @@ class Classifier extends Component {
         body: JSON.stringify(b),
       })
         .then((res) => {
-          //console.log(res);
           if (res.status === 200) {
             
             var js = res.json();
             js.then((rta) => {
               this.setState({ opcion: rta['opcion'] , loading: false});
-              //console.log(rta['opcion']);
             });
            
           } else {
@@ -71,7 +69,7 @@ class Classifier extends Component {
         <div className="row" style={{ marginLeft: "10px" }}>
           <div className="col-6">
             <div className="row" style={{ marginLeft: "0px" }}>
-              <h4 style={{ color: "#9b9bff" }}>Opciones</h4>
+              <h4 style={{ color: "#9b9bff" }}>Options</h4>
               <i
                 className="fa fa-plus-circle"
                 aria-hidden="true"
@@ -96,7 +94,7 @@ class Classifier extends Component {
             ))}
           </div>
           <div className="col-6">
-          <h4 style={{ color: "#9b9bff", marginLeft: "-15px" }}> Texto</h4>
+          <h4 style={{ color: "#9b9bff", marginLeft: "-15px" }}> Text</h4>
             <div className="row">
               
               <input className="opciones" id="textclassify" type="text" style={{width: "70%"}}></input>
