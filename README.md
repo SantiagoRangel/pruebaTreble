@@ -92,7 +92,7 @@ And get something like this:
 
 ```bash
 offline: Starting Offline: dev/us-east-1.
-offline: Offline [http for lambda] listening on http://localhost:3002
+offline: Offline [http for lambda] listening on http://localhost:3000
 
 
    ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -167,4 +167,4 @@ If all tests were passed, returns:
     "result": "All tests passed"
 }
 
-**All endpoints except for tests are avaible through interaction with front web app**
+**All endpoints except for tests are avaible through interaction with the front web app**
